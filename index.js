@@ -1,30 +1,27 @@
-const querystring = require('querystring');
-const request     = require('request');
-const iconv       = require('iconv-lite');
+const promise = require('request-promise');
 
 module.exports = {
 
-    rfcall(requestSap, callback) {
+    rfc(request) {
+        
+        return new Promise((resolve,reject) => {
 
-        const body = querystring.stringify(requestSap.payload);
-    
-        const options = {
-            method: 'POST',
-            uri: requestSap.uri,
-            body: body,
-            headers: {
+            let headers = {
                 'Content-Type': 'application/json',
-                'token': requestSap.token
-            },
-            encoding: null
-        }
+                'token': request.token
+            }
+        
+            let options = {
+                headers: headers,
+                uri: request.uri,
+                method: 'POST',
+                body: request.payload,
+                encoding: 'latin1'
+            }
 
-        request(options, (err, res, body) => {
-
-            if (!err && res.statusCode == 200)
-                callback(iconv.decode(Buffer.from(body), 'ISO-8859-1')); // Returns UTF-8
-            else
-                callback(err);
-        });
+            promise(options)
+                .then(body => resolve(body))
+                .catch(err => reject(err));
+        })
     }
 }
