@@ -9,8 +9,8 @@ module.exports = {
         const body = querystring.stringify(requestSap.payload);
     
         const options = {
-            method: 'GET',
-            uri: `${requestSap.api}${requestSap.rfc}`,
+            method: 'POST',
+            uri: requestSap.uri,
             body: body,
             headers: {
                 'Content-Type': 'application/json',
