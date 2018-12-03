@@ -1,6 +1,6 @@
 {
   "name": "callsap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy way to call SAP RFCs",
   "main": "index.js",
   "scripts": {
