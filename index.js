@@ -4,7 +4,7 @@ module.exports = {
 
     rfc(request) {
         
-        return new Promise((resolve,reject) => {
+        return new Promise((resolve, reject) => {
 
             let headers = {
                 'Content-Type': 'application/json',
@@ -12,16 +12,17 @@ module.exports = {
             }
         
             let options = {
-                headers: headers,
-                uri: request.uri,
+                url: request.uri,
                 method: 'POST',
+                headers: headers,
                 body: request.payload,
+                json: true,
                 encoding: 'latin1'
             }
 
             promise(options)
                 .then(body => resolve(body))
                 .catch(err => reject(err));
-        })
+        });
     }
 }
