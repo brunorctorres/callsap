@@ -1,2 +1,2 @@
 # callsap
-Easy way to call SAP RFCs.
+Easy way to call SAP RFCs
