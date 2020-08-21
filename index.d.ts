@@ -1,1 +1,1 @@
-export function rfc(request: object): Promise<object>
+export function rfc(request: object): Promise<any>
