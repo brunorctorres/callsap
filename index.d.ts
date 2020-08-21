@@ -1,0 +1,1 @@
+export function rfc(request: object): Promise<object>
